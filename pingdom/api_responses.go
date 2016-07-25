@@ -46,6 +46,21 @@ type CheckResponseType struct {
 	HTTP *CheckResponseHTTPDetails `json:"http,omitempty"`
 }
 
+type ContactResponse struct {
+	ID                 int    `json:"id"`
+	Name               string `json:"name"`
+	Email              string `json:"email,omitempty"`
+	Cellphone          string `json:"cellphone,omitempty"`
+	Countryiso         string `json:"countryiso,omitempty"`
+	Defaultsmsprovider string `json:"defaultsmsprovider,omitempty"`
+	Directtwitter      bool   `json:"directtwitter,omitempty"`
+	Twitteruser        string `json:"twitteruser,omitempty"`
+	Iphonetokens       string `json:"iphonetokens,omitempty"`
+	Androidtokens      string `json:"androidtokens,omitempty"`
+	Paused             bool   `json:"paused,omitempty"`
+	Type               string `json:"type,omitempty"`
+}
+
 func (c *CheckResponseType) UnmarshalJSON(b []byte) error {
 	var raw interface{}
 
@@ -105,6 +120,14 @@ type listChecksJsonResponse struct {
 
 type checkDetailsJsonResponse struct {
 	Check *CheckResponse `json:"check"`
+}
+
+type contactDetailsJsonResponse struct {
+	Contact *ContactResponse `json:"contact"`
+}
+
+type listContactsJsonResponse struct {
+	Contacts []ContactResponse `json:"contacts"`
 }
 
 type errorJsonResponse struct {
